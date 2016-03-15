@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   root to: "my_vaccination_card#index"
   # You can have the root of your site routed with "root"
 
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

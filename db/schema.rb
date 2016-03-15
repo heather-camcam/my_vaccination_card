@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315132836) do
-
-ActiveRecord::Schema.define(version: 0) do
-
+ActiveRecord::Schema.define(version: 20160315155128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,4 +33,17 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vaccinations", force: :cascade do |t|
+    t.text     "science_name"
+    t.text     "commercial_name"
+    t.text     "pharmaceutical_form"
+    t.string   "presentation"
+    t.integer  "no_of_doses"
+    t.text     "manufacturer"
+    t.text     "responsible_nra"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
 end
