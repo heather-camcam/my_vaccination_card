@@ -14,6 +14,7 @@
 <body>
   <% if @vaccinations.any? %>
    <% @vaccinations.each do |vaccination| %>
+    <%= vaccination.name %>
      <%= link_to "Edit #{vaccination.name}", edit_vaccination_path(vaccination) %>
      <%= link_to "Delete #{vaccination.name}", vaccination_path(vaccination), method: :delete %>
    <% end %>
