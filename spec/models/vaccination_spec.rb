@@ -1,5 +1,4 @@
 require 'rails_helper'
 
 RSpec.describe Vaccination, type: :model do
-  it { should have_and_belong_to_many :histories}
 end
