@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyVaccinationCard</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if @vaccinations.any? %>
+   <% @vaccinations.each do |vaccination| %>
+     <%= link_to "Edit #{vaccination.name}", edit_vaccination_path(vaccination) %>
+     <%= link_to "Delete #{vaccination.name}", vaccination_path(vaccination), method: :delete %>
+   <% end %>
+  <% else %>
+   <h1>No vaccinations added yet</h1>
+  <% end %>
+  <a>(href='/vaccination/new') Add a vaccination</a>
+  <%= link_to "Add a vaccination", new_vaccination_path(vaccination) %>
+
+<%= yield %>
+
+
+</body>
+</html>
