@@ -23,4 +23,15 @@ feature 'vaccinations' do
     end
   end
 
+  context 'creating vaccinations' do
+    scenario 'prompts user to fill out a form, then displays the new vaccination' do
+      visit '/vaccinations'
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'Typhoid'
+      click_button 'Add vaccination'
+      expect(page).to have_content 'Typhoid'
+      expect(current_path).to eq '/vaccinations'
+    end
+end
+
 end
