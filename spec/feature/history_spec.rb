@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'vaccinations' do
+feature 'vaccination history' do
 
   context 'no vaccinations added' do
     scenario 'should display prompt to add a vaccination' do
@@ -13,11 +13,11 @@ feature 'vaccinations' do
 
   context 'vaccinations have been added' do
     before do
-      Vaccination.create(name: 'Typhoid')
+      History.create(name: 'Typhoid')
     end
 
     scenario 'display vaccinations' do
-      visit '/vaccinations'
+      visit '/history'
       expect(page).to have_content('Typhoid')
       expect(page).not_to have_content('No vaccinations added yet')
     end
@@ -25,12 +25,12 @@ feature 'vaccinations' do
 
   context 'creating vaccinations' do
     scenario 'prompts user to fill out a form, then displays the new vaccination' do
-      visit '/vaccinations'
-      click_link 'Add a restaurant'
+      visit '/history'
+      click_link 'Add a vaccination'
       fill_in 'Name', with: 'Typhoid'
       click_button 'Add vaccination'
       expect(page).to have_content 'Typhoid'
-      expect(current_path).to eq '/vaccinations'
+      expect(current_path).to eq '/history'
     end
 end
 
