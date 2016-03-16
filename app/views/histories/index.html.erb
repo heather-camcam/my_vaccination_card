@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>MyVaccinationCard</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <% if @histories.any? %>
-   <% @histories.each do |h| %>
-    <%= h.id %>
-   <% end %>
-  <% else %>
-   <h1>No vaccinations added yet</h1>
+
+<% if @histories.any? %>
+  <% @histories.each do |h| %>
+  <ul>
+    <div id="date given">Scientific Name: <li><%= h.vaccination.science_name %></li></div>
+    <div id="date given">Commercial Name: <li><%= h.vaccination.commercial_name %></li></div>
+    <div id="date given">Date Given: <li><%= h.date_given %></li></div>
+    <div id="date given">Location Administered: <li><%= h.clinic_name %> </li></div>
+  </ul>
   <% end %>
-  <a href='#'>Add a vaccination</a>
-
-<%= yield %>
-
-
-</body>
-</html>
+<% else %>
+  <h1>No vaccinations added yet</h1>
+<% end %>
+<a href='/histories/new'>Add a vaccination</a>
