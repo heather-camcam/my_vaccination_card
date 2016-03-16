@@ -1,7 +1,13 @@
 class HistoriesController < ApplicationController
 
   def index
+    #graphics and angular code
+    # retrieve information from history_api
+  end
+
+  def history_api
     @histories = History.all
+    render json: @histories
   end
 
   def new
