@@ -10,9 +10,11 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    history = current_user.histories.create(vaccination_params)
     v = Vaccination.find(params[:vax])
-    history.vaccinations << v
+    history = current_user.histories.new(vaccination_params)
+    history.user_id = current_user.id
+    history.vaccination_id = v.id
+    history.save
     redirect_to '/histories'
   end
 
