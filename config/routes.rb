@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  root to: "history#index"
+  root to: "histories#index"
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  resources :history
+  resources :histories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

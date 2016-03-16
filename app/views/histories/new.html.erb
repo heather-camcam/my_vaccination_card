@@ -1,0 +1,14 @@
+<%= form_for @history do |f| %>
+  <%= select_tag(:vax, options_from_collection_for_select(Vaccination.all, :id, :science_name)) %>
+  <br/ >
+  <%= f.label :date_given %>
+  <%= f.date_select(:date_given, order: [:day, :month, :year]) %>
+  <br />
+  <%= f.label :clinic_name %>
+  <%= f.text_area :clinic_name %>
+  <br />
+  <%= f.label :expiry_date %>
+  <%= f.date_select(:expiry_date, order: [:day, :month, :year]) %>
+  <br />
+  <%= f.submit %>
+<% end %>
