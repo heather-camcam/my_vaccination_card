@@ -24,6 +24,14 @@ class HistoriesController < ApplicationController
   end
 
   def edit
+    @history = History.find(params[:id])
+    # byebug
+  end
+
+  def update
+    @history = History.find(params[:id])
+    @history.update(vaccination_params)
+    redirect_to '/histories'
   end
 
   def vaccination_params

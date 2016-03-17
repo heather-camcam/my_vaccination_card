@@ -1,10 +1,10 @@
 <ul ng-repeat="history in histories">
-  
       <li>{{history.vaccination.science_name}} - {{history.vaccination.commercial_name}}</li>
       <ul>
         <li>Clinic name: {{history.clinic_name}}</li>
         <li>Date Administered: {{history.date_given}}</li>
         <li>Expiry Date: {{history.expiry_date}}</li>
+        <a href='/histories/{{history.id}}/edit'>Edit vaccination information</a>
       </ul>
 </ul>
 
