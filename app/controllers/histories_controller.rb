@@ -1,6 +1,7 @@
 class HistoriesController < ApplicationController
 
   def index
+    @histories = History.all
     #graphics and angular code
     # retrieve information from history_api
   end

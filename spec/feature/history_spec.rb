@@ -2,36 +2,36 @@ require 'rails_helper'
 
 feature 'vaccination history' do
 
+  before do
+    visit '/users/sign_up'
+    fill_in 'user_email', with: 'asd@asd.com'
+    fill_in 'user_first_name', with: 'asd'
+    fill_in 'user_last_name', with: 'asd'
+    fill_in 'user_password', with: 'asdasdasd'
+    fill_in 'user_password_confirmation', with: 'asdasdasd'
+    click_button 'Sign up'
+  end
+
   context 'no vaccinations added' do
+
     scenario 'should display prompt to add a vaccination' do
-      sign_up
-      expect(page).to have_content 'No vaccinations added yet'
+      visit '/'
       expect(page).to have_link 'Add a vaccination'
     end
 
   end
 
-  context 'vaccinations have been added' do
-    before do
-      History.create(id: 'Typhoid')
-    end
-
-    scenario 'display vaccinations' do
-      visit '/histories'
-      expect(page).to have_content('Typhoid')
-      expect(page).not_to have_content('No vaccinations added yet')
-    end
-  end
-
   context 'creating vaccinations' do
-    scenario 'prompts user to fill out a form, then displays the new vaccination' do
-      visit '/histories'
-      click_link 'Add a vaccination'
-      fill_in 'Name', with: 'Typhoid'
-      click_button 'Add vaccination'
-      expect(page).to have_content 'Typhoid'
+
+    scenario 'prompts user to fill out a form, then stores the vax in the db' do
+      visit '/histories/new'
+      fill_in 'history_clinic_name', with: 'gogo'
+      click_button 'Create History'
       expect(current_path).to eq '/histories'
+      history = History.find_by(clinic_name: 'gogo')
+      expect(history.clinic_name).to eq 'gogo'
     end
-end
+
+  end
 
 end
