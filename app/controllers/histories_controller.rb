@@ -8,7 +8,7 @@ class HistoriesController < ApplicationController
 
   def show
     @histories = History.all
-    render json: @histories
+    render json: @histories.to_json(include: [:vaccination])
   end
 
   def new
