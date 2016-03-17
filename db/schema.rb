@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20160316164551) do
   add_index "histories", ["user_id"], name: "index_histories_on_user_id", using: :btree
   add_index "histories", ["vaccination_id"], name: "index_histories_on_vaccination_id", using: :btree
 
+  create_table "histories_vaccinations", id: false, force: :cascade do |t|
+    t.integer "vaccination_id", null: false
+    t.integer "history_id",     null: false
+  end
+
+  add_index "histories_vaccinations", ["history_id", "vaccination_id"], name: "index_histories_vaccinations_on_history_id_and_vaccination_id", using: :btree
+  add_index "histories_vaccinations", ["vaccination_id", "history_id"], name: "index_histories_vaccinations_on_vaccination_id_and_history_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
