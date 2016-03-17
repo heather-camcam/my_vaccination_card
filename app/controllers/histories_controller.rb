@@ -1,5 +1,7 @@
 class HistoriesController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @histories = History.all
   end
