@@ -31,6 +31,5 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:email]).to include ('has already been taken')
   end
-
-
+  
 end
