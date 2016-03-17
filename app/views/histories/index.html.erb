@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
+<ul ng-repeat="history in histories">
+  
+      <li>{{history.vaccination.science_name}} - {{history.vaccination.commercial_name}}</li>
+      <ul>
+        <li>Clinic name: {{history.clinic_name}}</li>
+        <li>Date Administered: {{history.date_given}}</li>
+        <li>Expiry Date: {{history.expiry_date}}</li>
+      </ul>
+</ul>
 
-<body>
-<% if @histories.any? %>
-  <% @histories.each do |h| %>
-  <ul>
-    <div id="scientific name">Scientific Name: <li><%= h.vaccination.science_name %></li></div>
-    <div id="commercial name">Commercial Name: <li><%= h.vaccination.commercial_name %></li></div>
-    <div id="date given">Date Given: <li><%= h.date_given %></li></div>
-    <div id="location administered">Location Administered: <li><%= h.clinic_name %> </li></div>
-    <br>
-  </ul>
-  <% end %>
-<% else %>
-  <h1>No vaccinations added yet</h1>
-<% end %>
-<a href='/histories/new'>Add a vaccination</a>
-</body>
-</html>
+ <a href='/histories/new'>Add a vaccination</a>

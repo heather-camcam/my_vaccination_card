@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Bower packages
+//= require angular
+//= require angular-resource
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
