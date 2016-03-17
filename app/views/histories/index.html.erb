@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
+<div ng-controller="myVaccinationHistoryController">
 
-<body>
-<% if @histories.any? %>
-  <% @histories.each do |h| %>
-  <ul>
-    <div id="scientific name">Scientific Name: <li><%= h.vaccination.science_name %></li></div>
-    <div id="commercial name">Commercial Name: <li><%= h.vaccination.commercial_name %></li></div>
-    <div id="date given">Date Given: <li><%= h.date_given %></li></div>
-    <div id="location administered">Location Administered: <li><%= h.clinic_name %> </li></div>
-    <br>
-  </ul>
-  <% end %>
-<% else %>
-  <h1>No vaccinations added yet</h1>
-<% end %>
-<a href='/histories/new'>Add a vaccination</a>
-</body>
-</html>
+<ul>
+  <li ng-repeat="history in histories">
+    {{history.clinic_name}}
+  </li>
+</ul>
+
+</div>

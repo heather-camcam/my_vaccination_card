@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app"MyVaccinationHistory">
 <head>
   <title>MyVaccinationCard</title>
   <meta charset="utf-8">
@@ -7,21 +7,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
+  <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"> -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="js/app.js"></script>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
+  <header role="banner">
+    <img id="logo-main" src="/images/logo.png" width="160" alt="Logo Thing main logo">
+  </header><!-- header role="banner" -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+  <body>
 
-<%= yield %>
+  <% if user_signed_in? %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Sign up", new_user_registration_path %>
+  <% end %>
+
+  <%= yield %>
 
 
-</body>
+  </body>
 </html>
