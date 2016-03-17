@@ -3,13 +3,7 @@ require 'rails_helper'
 feature 'vaccination history' do
 
   before do
-    visit '/users/sign_up'
-    fill_in 'user_email', with: 'asd@asd.com'
-    fill_in 'user_first_name', with: 'asd'
-    fill_in 'user_last_name', with: 'asd'
-    fill_in 'user_password', with: 'asdasdasd'
-    fill_in 'user_password_confirmation', with: 'asdasdasd'
-    click_button 'Sign up'
+    sign_up
   end
 
   context 'no vaccinations added' do
