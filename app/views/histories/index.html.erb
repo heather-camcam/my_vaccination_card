@@ -14,7 +14,9 @@
     <td>{{history.clinic_name}}</td>
     <td>{{history.date_given}}</td>
     <td>{{history.expiry_date}}</td>
-    <td><a href='/histories/{{history.id}}/edit'>Edit</a></td>
+    <% if current_user %>
+      <td><a href='/histories/{{history.id}}/edit'>Edit</a></td>
+    <% end %>
   </tr>
 
 
