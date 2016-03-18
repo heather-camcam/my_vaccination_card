@@ -25,7 +25,7 @@ class HistoriesController < ApplicationController
 
   def edit
     @history = History.find(params[:id])
-    # byebug
+    @vaccination = Vaccination.find(params)
   end
 
   def update

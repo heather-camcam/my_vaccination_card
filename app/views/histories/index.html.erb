@@ -1,4 +1,3 @@
-
 <table class="table table-bordered" style="width:800px float:center">
 
   <tr>
@@ -19,4 +18,7 @@
 
 
  </table>
- <a href='/histories/new' class="btn btn-primary">Add a vaccination</a>
+
+ <% if current_user %>
+   <a href='/histories/new' class="btn btn-primary">Add a vaccination</a>
+ <% end %>
