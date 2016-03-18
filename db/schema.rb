@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316164551) do
+ActiveRecord::Schema.define(version: 20160317232605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "country"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "countries_vaccinations", id: false, force: :cascade do |t|
+    t.integer "country_id",     null: false
+    t.integer "vaccination_id", null: false
+  end
+
+  add_index "countries_vaccinations", ["country_id", "vaccination_id"], name: "index_countries_vaccinations_on_country_id_and_vaccination_id", using: :btree
+  add_index "countries_vaccinations", ["vaccination_id", "country_id"], name: "index_countries_vaccinations_on_vaccination_id_and_country_id", using: :btree
 
   create_table "histories", force: :cascade do |t|
     t.date     "date_given"
@@ -28,14 +43,6 @@ ActiveRecord::Schema.define(version: 20160316164551) do
 
   add_index "histories", ["user_id"], name: "index_histories_on_user_id", using: :btree
   add_index "histories", ["vaccination_id"], name: "index_histories_on_vaccination_id", using: :btree
-
-  create_table "histories_vaccinations", id: false, force: :cascade do |t|
-    t.integer "vaccination_id", null: false
-    t.integer "history_id",     null: false
-  end
-
-  add_index "histories_vaccinations", ["history_id", "vaccination_id"], name: "index_histories_vaccinations_on_history_id_and_vaccination_id", using: :btree
-  add_index "histories_vaccinations", ["vaccination_id", "history_id"], name: "index_histories_vaccinations_on_vaccination_id_and_history_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -67,8 +74,12 @@ ActiveRecord::Schema.define(version: 20160316164551) do
     t.text     "responsible_nra"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "country_id"
   end
+
+  add_index "vaccinations", ["country_id"], name: "index_vaccinations_on_country_id", using: :btree
 
   add_foreign_key "histories", "users"
   add_foreign_key "histories", "vaccinations"
+  add_foreign_key "vaccinations", "countries"
 end

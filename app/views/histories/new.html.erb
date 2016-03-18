@@ -1,6 +1,6 @@
-<%= form_for @history, html: {class: "form-horizontal center"} do |f| %>
+<%= form_for @history, html: {class: "form"} do |f| %>
   <div class="form-group">
-    <%= select_tag(:vax, options_from_collection_for_select(Vaccination.all, :id, :science_name)) %>
+    <%= select_tag(:vax, options_from_collection_for_select(Vaccination.all, :id, :science_name, :type)) %>
   </div>
   <div class="form-group">
     <%= f.label :date_given %>

@@ -2,8 +2,7 @@ require 'csv'
 namespace :import_vaccinations_csv do
   task :create_import => :environment do
 
-
-    csv_text = File.open('lib/tasks/vax.csv', "r:ISO-8859-1")
+    csv_text = File.open('/Users/alex/Desktop/vax.csv', "r:ISO-8859-1")
 
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|

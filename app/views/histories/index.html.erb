@@ -1,11 +1,47 @@
-<ul ng-repeat="history in histories">
-      <li>{{history.vaccination.science_name}} - {{history.vaccination.commercial_name}}</li>
-      <ul>
-        <li>Clinic name: {{history.clinic_name}}</li>
-        <li>Date Administered: {{history.date_given}}</li>
-        <li>Expiry Date: {{history.expiry_date}}</li>
-        <a href='/histories/{{history.id}}/edit'>Edit vaccination information</a>
-      </ul>
-</ul>
+<% if user_signed_in? %>
+  <h1> User Dashboard  <%= link_to 'Add a vaccination', new_history_path, class: 'btn btn-success btn-sm' %></h1>
+  <h3> Vaccination Card </h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Scientific Name</th>
+        <th>Commercial Name</th>
+        <th>Date Administered</th>
+        <th>Clinic's Name</th>
+        <th>Expiry Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="history in histories">
+        <td>{{ history.vaccination.science_name }}</td>
+        <td>{{ history.vaccination.commercial_name }}</td>
+        <td>{{ history.date_given }}</td>
+        <td>{{ history.clinic_name }}</td>
+        <td>{{ history.expiry_date }}</td>
+        <td><a href='/histories/{{history.id}}/edit'>Edit</a></td>
+      </tr>
+    </tbody>
+    </table>
 
- <a href='/histories/new'>Add a vaccination</a>
+  <h3> Where are you travelling to? </h3>
+
+  <form name="myForm">
+    <label for="repeatSelect"> Country select: </label>
+    <select name="mySelect" id="mySelect"
+      ng-options="c.name for c in countries" ng-model="c">
+    </select>
+  </form>
+  <hr>
+  <tt>Country = {{c.name}}</tt><br/>
+  <strong><p> Vaccinations Required </p></strong>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="v in c.vaccinations">
+      <strong>Commercial Name:</strong> {{ v.commercial_name }}
+    </li>
+  </ul>
+<% else %>
+  <div class="text-center">
+    <h1> Sign in to record your vaccination history </div>
+  </div>
+<% end %>
