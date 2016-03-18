@@ -8,4 +8,6 @@
       </ul>
 </ul>
 
- <a href='/histories/new'>Add a vaccination</a>
+<% if current_user %>
+  <a href='/histories/new'>Add a vaccination</a>
+<% end %>
