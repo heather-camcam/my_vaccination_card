@@ -27,7 +27,6 @@ class HistoriesController < ApplicationController
 
   def edit
     @history = History.find(params[:id])
-    # byebug
   end
 
   def update
