@@ -1,4 +1,3 @@
-<form role="form">
 <%= form_for @history, html: {class: "form-horizontal center"} do |f| %>
   <div class="form-group">
     <%= select_tag(:vax, options_from_collection_for_select(Vaccination.all, :id, :science_name)) %>
@@ -17,4 +16,3 @@
   </div>
   <%= f.submit "Create History", class: "btn btn-default btn-primary" %>
 <% end %>
-</form>
